@@ -1,0 +1,130 @@
+[
+  {
+    "model": "shop.category",
+    "pk": 1,
+    "fields": {
+      "name": "Повседневный",
+      "description": "Можно подарить просто так, или в знак любви и признания!"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 2,
+    "fields": {
+      "name": "Праздничный",
+      "description": "Для любого события в жизни"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 3,
+    "fields": {
+      "name": "Свадебный",
+      "description": "Для невест и подружек!"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 4,
+    "fields": {
+      "name": "Для мамы",
+      "description": "Теплые и нежные тона!"
+    }
+  },
+  {
+    "model": "shop.flowers",
+    "pk": 1,
+    "fields": {
+      "name": "Каждый день!",
+      "Imag": "",
+      "category": 1,
+      "price": "3000.00",
+      "date_of_creation": "2023-08-23",
+      "last_modified_date": "2023-08-23"
+    }
+  },
+  {
+    "model": "shop.flowers",
+    "pk": 2,
+    "fields": {
+      "name": "Хорошие цветы",
+      "Imag": "",
+      "category": 1,
+      "price": "2500.00",
+      "date_of_creation": "2023-08-23",
+      "last_modified_date": "2023-08-23"
+    }
+  },
+  {
+    "model": "shop.flowers",
+    "pk": 3,
+    "fields": {
+      "name": "Юбилейный",
+      "Imag": "",
+      "category": 2,
+      "price": "5000.00",
+      "date_of_creation": "2023-08-23",
+      "last_modified_date": "2023-08-23"
+    }
+  },
+  {
+    "model": "shop.flowers",
+    "pk": 4,
+    "fields": {
+      "name": "Моей маме",
+      "Imag": "",
+      "category": 4,
+      "price": "2800.00",
+      "date_of_creation": "2023-08-23",
+      "last_modified_date": "2023-08-23"
+    }
+  },
+  {
+    "model": "shop.flowers",
+    "pk": 5,
+    "fields": {
+      "name": "Ах, это свадьба!",
+      "Imag": "",
+      "category": 3,
+      "price": "4000.00",
+      "date_of_creation": "2023-08-23",
+      "last_modified_date": "2023-08-23"
+    }
+  },
+  {
+    "model": "shop.flowers",
+    "pk": 6,
+    "fields": {
+      "name": "Мега Юбиляр!",
+      "Imag": "",
+      "category": 2,
+      "price": "6000.00",
+      "date_of_creation": "2023-08-23",
+      "last_modified_date": "2023-08-23"
+    }
+  },
+  {
+    "model": "shop.flowers",
+    "pk": 7,
+    "fields": {
+      "name": "Единственной",
+      "Imag": "",
+      "category": 3,
+      "price": "3500.00",
+      "date_of_creation": "2023-08-23",
+      "last_modified_date": "2023-08-23"
+    }
+  },
+  {
+    "model": "shop.flowers",
+    "pk": 8,
+    "fields": {
+      "name": "От детей и внуков!",
+      "Imag": "",
+      "category": 4,
+      "price": "3200.00",
+      "date_of_creation": "2023-08-23",
+      "last_modified_date": "2023-08-23"
+    }
+  }
+]
