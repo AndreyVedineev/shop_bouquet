@@ -2,9 +2,13 @@ import json
 
 from django.shortcuts import render
 
+from shop.models import Flowers
+
 
 def home(request):
-    print(request)
+    print(f'Я - {request}')
+    fl = Flowers.objects.all()[:5]
+    print(fl)
     return render(request, 'shop/home.html')
 
 

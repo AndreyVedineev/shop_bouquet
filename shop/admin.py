@@ -1,7 +1,14 @@
 from django.contrib import admin
 
-from shop.models import Category, Flowers
+from shop.models import Category, Flowers, Contacts
 
+
+@admin.register(Contacts)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone', 'message')
+    list_filter = ('name',)
+    search_fields = ('name',)
+    verbose_name = 'Контакты'
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):

@@ -3,6 +3,20 @@ from django.db import models
 NULLABLE = {'blank': True, 'null': True}
 
 
+class Contacts(models.Model):
+    name = models.CharField(max_length=150, verbose_name='Имя')
+    phone = models.CharField(max_length=35, verbose_name='Телефон')
+    message = models.TextField()
+
+    def __str__(self):
+        return f'{self.name} {self.phone}'
+
+    class Meta:
+        verbose_name = 'Контакт'  # Настройка для наименования одного объекта
+        verbose_name_plural = 'Контакты'  # Настройка для наименования набора объектов
+        ordering = ['name']
+
+
 class Category(models.Model):
     name = models.CharField(max_length=150, verbose_name='Категория')
     description = models.TextField(**NULLABLE, verbose_name='Описание')
@@ -13,6 +27,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Категория'  # Настройка для наименования одного объекта
         verbose_name_plural = 'Категории'  # Настройка для наименования набора объектов
+        ordering = ['name']
 
 
 class Flowers(models.Model):
@@ -30,3 +45,4 @@ class Flowers(models.Model):
         verbose_name = 'Букет'  # Настройка для наименования одного объекта
         verbose_name_plural = 'Букеты'  # Настройка для наименования набора объектов
         ordering = ['name']
+
