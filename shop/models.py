@@ -8,7 +8,7 @@ class Category(models.Model):
     description = models.TextField(**NULLABLE, verbose_name='Описание')
 
     def __str__(self):
-        return f'{self.name} {self.description}'
+        return f'{self.pk} {self.name}'
 
     class Meta:
         verbose_name = 'Категория'  # Настройка для наименования одного объекта
@@ -24,7 +24,7 @@ class Flowers(models.Model):
     last_modified_date = models.DateField(auto_now=True, verbose_name='Дата последнего изменения')
 
     def __str__(self):
-        return f'{self.name} {self.category} {self.price} {self.date_of_creation}'
+        return f'{self.pk} {self.name} {self.category} {self.price} {self.date_of_creation}'
 
     class Meta:
         verbose_name = 'Букет'  # Настройка для наименования одного объекта
