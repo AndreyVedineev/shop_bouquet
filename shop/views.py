@@ -2,14 +2,15 @@ import json
 
 from django.shortcuts import render
 
-from shop.models import Flowers
+from shop.models import Flowers, Category
 
 
 def home(request):
-    print(f'Я - {request}')
-    fl = Flowers.objects.all()[:5]
-    print(fl)
-    return render(request, 'shop/home.html')
+    context = {
+        'object_list': Flowers.objects.all()[:8],
+        'title': '<Букеты - интернет магазин>'
+    }
+    return render(request, 'shop/home.html', context)
 
 
 def contacts(request):
@@ -30,3 +31,16 @@ def contacts(request):
         with open('data_massage.json', 'a', encoding='utf-8') as fp:
             json.dump(data, fp)
     return render(request, 'shop/contacts.html')
+
+
+def detail_info(request, pk):
+    item = Flowers.objects.get(pk=pk)
+    cat = item.category
+    pr = item.price
+    context = {
+        'title': f'Букет -  {item.name}',
+        'category': cat,
+        'price' : pr
+    }
+    print(context)
+    return render(request, 'shop/detail_info.html', context)
