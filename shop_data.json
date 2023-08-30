@@ -167,7 +167,7 @@
       "image": "products/buket-1.png",
       "date_of_creation": "2023-08-28",
       "is_publication": true,
-      "number_of_views": 92
+      "number_of_views": 105
     }
   },
   {
@@ -180,7 +180,7 @@
       "image": "products/shkola.jpg",
       "date_of_creation": "2023-08-28",
       "is_publication": true,
-      "number_of_views": 202
+      "number_of_views": 204
     }
   },
   {
@@ -206,7 +206,7 @@
       "image": "products/easter.jpg",
       "date_of_creation": "2023-08-28",
       "is_publication": false,
-      "number_of_views": 506
+      "number_of_views": 509
     }
   }
 ]

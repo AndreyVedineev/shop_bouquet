@@ -48,7 +48,7 @@ class Flowers(models.Model):
 
 
 class Blog(models.Model):
-    name = models.CharField(max_length=150, verbose_name='Наименование')
+    name = models.CharField(max_length=150, verbose_name='Заголовок')
     slug = models.CharField(max_length=150, verbose_name='Slug')
     content = models.TextField(**NULLABLE, verbose_name='Содержимое')
     image = models.ImageField(upload_to='products/', verbose_name='Превью', **NULLABLE)
@@ -64,3 +64,21 @@ class Blog(models.Model):
         verbose_name = 'блог'  # Настройка для наименования одного объекта
         verbose_name_plural = 'Блоги'  # Настройка для наименования набора объектов
         ordering = ['number_of_views']
+
+
+class Versions(models.Model):
+    bouquet = models.ForeignKey(Flowers, on_delete=models.CASCADE, verbose_name='Продукт')
+    version_number = models.IntegerField(default=0, verbose_name='Номер версии продукта')
+    version_name = models.CharField(max_length=150, verbose_name='Имя версии продукта')
+    active_is = models.BooleanField(default=False, verbose_name='Признак активности продукта')
+
+    @property
+    def active_version(self):
+        return self.versions_set.filter(active_is=True).last()
+
+    def __str__(self):
+        return f'{self.bouquet} {self.version_number} {self.version_name}, {self.active_is}'
+
+    class Meta:
+        verbose_name = 'Версия букета'  # Настройка для наименования одного объекта
+        verbose_name_plural = 'Версии букетов'  # Настройка для наименования набора объектов

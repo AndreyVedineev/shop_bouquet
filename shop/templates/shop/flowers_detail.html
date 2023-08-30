@@ -4,14 +4,16 @@
 {% block content %}
 
 <div class="row text-start">
-    <div class="col-lg-4 col-md-6 col-sm-12">
+    <div class="col-4 col-md-6 col-sm-12">
         <div class="card mb-4 box-shadow">
             <div class="card-body">
-                <img class="img-fluid rounded mx-auto d-block" src="{{ object.Imag | my_media }}">
+                <img class="img-fluid rounded mx-auto d-block"
+                     style="max-height:350px"
+                     src="{{ object.Imag | my_media }}">
             </div>
         </div>
     </div>
-    <div class="col-lg-4 col-md-6 col-sm-12">
+    <div class="col-8 col-md-6 col-sm-12">
         <div class="card-body">
             <h2 class="my-1 font-weight-normal"> {{ object.name}} </h2>
             <h4>{{ object.category}}</h4>
@@ -19,13 +21,18 @@
             <p class="">Доставка в п. Мостовской: от 200 руб.</p>
         </div>
     </div>
-    <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class="card-body">
-            <h2 class="my-1 font-weight-normal"> {{ object.name}} </h2>
-            <h4>{{ object.category}}</h4>
-            <h4>{{ object.price | floatformat:0 }} ₽.</h4>
-            <p class="">Доставка в п. Мостовской: от 200 руб.</p>
-        </div>
+
+    <div class="col-3">
+        <a class="btn mt-3 btn-lg btn-block btn-outline-primary"
+           href="{% url 'shop:flowers_update/' object.pk %}"
+           role="button">
+            Изменить
+        </a>
+        <a class="btn mt-3 btn-lg btn-block btn-outline-danger"
+           href="{% url 'shop:flowers_delete/' object.pk %}"
+           role="button">
+            Удалить
+        </a>
     </div>
 </div>
 
