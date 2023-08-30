@@ -54,11 +54,11 @@
     "pk": 1,
     "fields": {
       "name": "Ах, это свадьба!",
-      "Imag": "",
+      "Imag": "products/12-cvetov-dlya-buketa.jpg",
       "category": 3,
       "price": "5000.00",
       "date_of_creation": "2023-08-24",
-      "last_modified_date": "2023-08-24"
+      "last_modified_date": "2023-08-25"
     }
   },
   {
@@ -66,11 +66,11 @@
     "pk": 2,
     "fields": {
       "name": "Дорогой!",
-      "Imag": "",
+      "Imag": "products/buket-piony.jpg",
       "category": 1,
       "price": "7000.00",
       "date_of_creation": "2023-08-24",
-      "last_modified_date": "2023-08-24"
+      "last_modified_date": "2023-08-26"
     }
   },
   {
@@ -78,11 +78,11 @@
     "pk": 3,
     "fields": {
       "name": "Единственной!",
-      "Imag": "",
+      "Imag": "products/buket-orkhidey.jpg",
       "category": 3,
       "price": "4500.00",
       "date_of_creation": "2023-08-24",
-      "last_modified_date": "2023-08-24"
+      "last_modified_date": "2023-08-26"
     }
   },
   {
@@ -90,11 +90,11 @@
     "pk": 4,
     "fields": {
       "name": "Каждый день!",
-      "Imag": "",
+      "Imag": "products/buket-hrizantema.jpg",
       "category": 1,
       "price": "3500.00",
       "date_of_creation": "2023-08-24",
-      "last_modified_date": "2023-08-24"
+      "last_modified_date": "2023-08-26"
     }
   },
   {
@@ -102,11 +102,11 @@
     "pk": 5,
     "fields": {
       "name": "Мега Юбиляр!",
-      "Imag": "",
+      "Imag": "products/buket-tulpany.jpg",
       "category": 2,
       "price": "4500.00",
       "date_of_creation": "2023-08-24",
-      "last_modified_date": "2023-08-24"
+      "last_modified_date": "2023-08-26"
     }
   },
   {
@@ -114,23 +114,23 @@
     "pk": 6,
     "fields": {
       "name": "Моей маме!",
-      "Imag": "",
+      "Imag": "products/buket-gerbery.jpg",
       "category": 4,
       "price": "3800.00",
       "date_of_creation": "2023-08-24",
-      "last_modified_date": "2023-08-24"
+      "last_modified_date": "2023-08-26"
     }
   },
   {
     "model": "shop.flowers",
     "pk": 7,
     "fields": {
-      "name": "От детей и внуков!",
-      "Imag": "",
+      "name": "Бульвар цветов!",
+      "Imag": "products/buket-rozy.jpg",
       "category": 4,
       "price": "2000.00",
       "date_of_creation": "2023-08-24",
-      "last_modified_date": "2023-08-24"
+      "last_modified_date": "2023-08-26"
     }
   },
   {
@@ -138,11 +138,11 @@
     "pk": 8,
     "fields": {
       "name": "Хорошие цветы!",
-      "Imag": "",
+      "Imag": "products/buket-alstromerii.jpg",
       "category": 1,
       "price": "3000.00",
       "date_of_creation": "2023-08-24",
-      "last_modified_date": "2023-08-24"
+      "last_modified_date": "2023-08-26"
     }
   },
   {
@@ -150,11 +150,63 @@
     "pk": 9,
     "fields": {
       "name": "Юбилейный!",
-      "Imag": "",
+      "Imag": "products/buket-gortezia.jpg",
       "category": 2,
       "price": "4900.00",
       "date_of_creation": "2023-08-24",
-      "last_modified_date": "2023-08-24"
+      "last_modified_date": "2023-08-26"
+    }
+  },
+  {
+    "model": "shop.blog",
+    "pk": 1,
+    "fields": {
+      "name": "Букет к празднику сейчас - оплата потом",
+      "slug": "buket-k-prazdniku-sejchas-oplata-potom",
+      "content": "1 сентября — символ нового этапа в жизни многих школьников и студентов. Время, когда в воздухе витает аромат свежих книг, слышится звон колокольчиков, и ощущается радость получения новых знаний и встречи с друзьями по учебе.",
+      "image": "products/buket-1.png",
+      "date_of_creation": "2023-08-28",
+      "is_publication": true,
+      "number_of_views": 92
+    }
+  },
+  {
+    "model": "shop.blog",
+    "pk": 2,
+    "fields": {
+      "name": "Символы знаний и красоты: цветы для первоклассника и учителя",
+      "slug": "simvolyi-znanij-i-krasotyi-tsvetyi-dlya-pervoklassnika-i-uchitelya",
+      "content": "Первое сентября – это не просто знак начала нового учебного года. В этот день в воздухе витает волнение: робкие первоклассники знакомятся с первой учительницей, старшие школьники снова встречают школьных друзей, которых не видели целое лето, а учителя с новыми силами приступают к тяжелому, но увлекательному преподавательскому труду. Цветочные композиции становятся в этот день неотъемлемой частью праздничной атмосферы, а также символом радости и успехов в новом учебном году.",
+      "image": "products/shkola.jpg",
+      "date_of_creation": "2023-08-28",
+      "is_publication": true,
+      "number_of_views": 202
+    }
+  },
+  {
+    "model": "shop.blog",
+    "pk": 3,
+    "fields": {
+      "name": "Выражайте любовь и заботу цветами в День Семьи!",
+      "slug": "vyirazhajte-lyubov-i-zabotu-tsvetami-v-den-semi",
+      "content": "8 июля жители России традиционно празднуют День семьи, любви и верности. Праздник зародился в городе Муроме, и тесно связан со святыми Петром и Февронией, которые считаются покровителями брака и семьи. Этот день отмечается с целью укрепления семейных ценностей, уважения и любви.",
+      "image": "products/rusbuket-2.png",
+      "date_of_creation": "2023-08-28",
+      "is_publication": true,
+      "number_of_views": 10004
+    }
+  },
+  {
+    "model": "shop.blog",
+    "pk": 4,
+    "fields": {
+      "name": "Весенняя красота: пасхальные цветочные композиции",
+      "slug": "vesennyaya-krasota-pashalnyie-tsvetochnyie-kompozitsii",
+      "content": "Часто использование белых цветов на Пасху имеет отдельное значение. Это связано с тем, что белый цвет олицетворяет чистоту, невинность, мир и благополучие. Белый цвет также связывается с Христом, который воскрес из мертвых.",
+      "image": "products/easter.jpg",
+      "date_of_creation": "2023-08-28",
+      "is_publication": false,
+      "number_of_views": 506
     }
   }
 ]

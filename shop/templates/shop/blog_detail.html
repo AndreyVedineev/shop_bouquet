@@ -1,0 +1,45 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% load my_tags %}
+{% block content %}
+
+
+<div class="row">
+    <div class="col-6">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">{{ object.name }}</h4>
+            </div>
+            <div class="card-body">
+                <img class="img-fluid rounded mx-auto d-block mb-3 w-75" src="{{ object.image | my_media }}">
+                <p class="card-title pricing-card-title">{{ object.content}}</p>
+                <h5 class="card-title pricing-card-title">Дата создания - {{ object.date_of_creation}}</h5>
+                <h6 class="card-title pricing-card-title">Просмотров - {{ object.number_of_views}}</h6>
+                <h6 class="card-title pricing-card-title">Слаг - {{ object.slug}}</h6>
+
+                <a class="btn mt-3 btn-lg btn-block btn-outline-primary"
+                   href="{% url 'shop:blog_update/' object.pk %}"
+                   role="button">
+                    Изменить
+                </a>
+                <a class="btn mt-3 btn-lg btn-block btn-outline-danger"
+                   href="{% url 'shop:blog_delete/' object.pk %}"
+                   role="button">
+                    Удалить
+                </a>
+                {% if object.is_publication %}
+                <a class="btn mt-3 btn-lg btn-block btn-outline-danger"
+                   href="{% url 'shop:toggle_activity/' object.pk %}">
+                        Деактивировать
+                    </a>
+                {% else %}
+                <a class="btn mt-3 btn-lg btn-block btn-outline-primary"
+                   href="{% url 'shop:toggle_activity/' object.pk %}">
+                        Активировать
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

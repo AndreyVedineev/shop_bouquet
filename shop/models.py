@@ -46,3 +46,21 @@ class Flowers(models.Model):
         verbose_name_plural = 'Букеты'  # Настройка для наименования набора объектов
         ordering = ['name']
 
+
+class Blog(models.Model):
+    name = models.CharField(max_length=150, verbose_name='Наименование')
+    slug = models.CharField(max_length=150, verbose_name='Slug')
+    content = models.TextField(**NULLABLE, verbose_name='Содержимое')
+    image = models.ImageField(upload_to='products/', verbose_name='Превью', **NULLABLE)
+    date_of_creation = models.DateField(auto_now_add=True, verbose_name='Дата создания')
+    is_publication = models.BooleanField(default=True, verbose_name='Признак публикации')
+    number_of_views = models.IntegerField(default=0, verbose_name='Количество просмотров', **NULLABLE)
+
+    def __str__(self):
+        # Строковое отображение объекта
+        return f'{self.name} {self.date_of_creation} {self.is_publication} {self.number_of_views}'
+
+    class Meta:
+        verbose_name = 'блог'  # Настройка для наименования одного объекта
+        verbose_name_plural = 'Блоги'  # Настройка для наименования набора объектов
+        ordering = ['number_of_views']
