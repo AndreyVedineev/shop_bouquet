@@ -1,11 +1,13 @@
 import json
 
+from django.forms import inlineformset_factory
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from pytils.translit import slugify
 
-from shop.models import Flowers, Blog
+from shop.forms import FlowersForm, VersionForm
+from shop.models import Flowers, Blog, Versions
 
 
 class FlowersListView(ListView):
@@ -16,6 +18,64 @@ class FlowersListView(ListView):
         'title': 'Букеты - интернет магазин'
     }
 
+
+class FlowersCreateView(CreateView):
+    model = Flowers
+    form_class = FlowersForm
+    success_url = reverse_lazy('shop:flowers_list/')
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+
+        Formset = inlineformset_factory(Flowers, Versions, form=VersionForm, extra=1)
+        if self.request.method == "POST":
+            context_data['formset'] = Formset(self.request.POST, instance=self.object)
+        else:
+            context_data['formset'] = Formset(instance=self.object)
+        return context_data
+
+    def form_valid(self, form):
+        formset = self.get_context_data()['formset']
+        self.object = form.save()
+        if formset.is_valid():
+            formset.instance = self.object
+            formset.save()
+
+        return super().form_valid(form)
+
+
+class FlowersUpdateView(UpdateView):
+    model = Flowers
+    form_class = FlowersForm
+    success_url = reverse_lazy('shop:flowers_list/')
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+
+        Formset = inlineformset_factory(Flowers, Versions, form=VersionForm, extra=1)
+        if self.request.method == "POST":
+            context_data['formset'] = Formset(self.request.POST, instance=self.object)
+        else:
+            context_data['formset'] = Formset(instance=self.object)
+        return context_data
+
+    def form_valid(self, form):
+        formset = self.get_context_data()['formset']
+        self.object = form.save()
+        if formset.is_valid():
+            formset.instance = self.object
+            formset.save()
+
+        return super().form_valid(form)
+
+
+class FlowersDetailView(DetailView):
+    model = Flowers
+
+
+class FlowersDeleteView(DeleteView):
+    model = Flowers
+    success_url = reverse_lazy('shop:flowers_list/')
 
 # def home(request):
 #     bouquets_list = Flowers.objects.all()
@@ -52,10 +112,6 @@ def contacts(request):
     return render(request, 'shop/contacts.html')
 
 
-class FlowersDetailView(DetailView):
-    model = Flowers
-
-
 # def detail_info(request, pk):
 #     item = Flowers.objects.get(pk=pk)
 #     cat = item.category
@@ -86,11 +142,13 @@ class BlogCreateView(CreateView):
 class BlogListView(ListView):
     paginate_by = 2
     model = Blog
+
     # не работает пагинатор
     def get_context_data(self, *, object_list=None, **kwargs):
         context_data = super().get_context_data(**kwargs)
         print(context_data)
-        context_data['page_obj'] = Blog.objects.filter(is_publication=True)
+        context_data['page_obj'] = Blog.objects.all()
+        #context_data['page_obj'] = Blog.objects.filter(is_publication=True)
         return context_data
 
 
@@ -110,14 +168,10 @@ class BlogUpdateView(UpdateView):
 
     # как вернуть на редактирование статьи
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['pk'] = self.object.pk
-    #     return context
     success_url = reverse_lazy('shop:blog_list/')
 
     # def get_success_url(self):
-    #     return reverse('shop:detail_list/', args=[self.object.pk])
+    #     return reverse('shop:blog_update/', args=[self.object.pk])
 
 
 def form_valid(self, form):

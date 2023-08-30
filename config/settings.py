@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop',
+    "crispy_forms",
+    "crispy_bootstrap5",
 ]
 
 MIDDLEWARE = [
@@ -149,3 +151,7 @@ EMAIL_HOST_USER ='l1liput69@yandex.ru'
 EMAIL_HOST_PASSWORD ='qoiymojplcaarzih'
 EMAIL_USE_SSL = True
 EMAIL_USE_TLS = False
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"

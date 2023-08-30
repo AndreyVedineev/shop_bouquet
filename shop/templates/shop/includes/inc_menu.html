@@ -1,5 +1,8 @@
-    <nav class="ms-5">
+
+
+<nav class="ms-5">
         <a class="p-2 btn btn-outline-primary" href="/">Каталог</a>
+        <a class="p-2 btn btn-outline-primary" href="{% url 'shop:flowers_create/' %}">Создать букет</a>
         <a class="p-2 btn btn-success" href="{% url 'shop:blog_create/' %}">Создать блог</a>
         <a class="p-2 btn btn-success" href="{% url 'shop:blog_list/' %}">Просмотр блогов</a>
         <a class="p-2 btn btn-outline-primary" href="/contacts/">Контакты</a>

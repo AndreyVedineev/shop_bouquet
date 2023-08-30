@@ -20,12 +20,12 @@
                 <h5 class="card-title pricing-card-title">Дата создания - {{ object.date_of_creation}}</h5>
                 <h6 class="card-title pricing-card-title">Просмотров - {{ object.number_of_views}}</h6>
                 {% if object.is_publication %}
-                <a class="btn mt-3 btn-lg btn-block btn-outline-danger"
+                <a class="btn mt-3 btn btn-outline-danger"
                    href="{% url 'shop:toggle_activity/' object.pk %}">
                     Деактивировать
                 </a>
                 {% else %}
-                <a class="btn mt-3 btn-lg btn-block btn-outline-primary"
+                <a class="btn mt-3 btn btn-outline-primary"
                     href="{% url 'shop:toggle_activity/' object.pk %}">
                     Активировать
                 </a>
