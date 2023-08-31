@@ -10,10 +10,8 @@
                 <h4 class="my-0 font-weight-normal">{{ object.name }}</h4>
             </div>
             <div class="card-body">
-                <h3 class="card-title pricing-card-title m-3">{{ object.price | floatformat:0 }} руб.</h3>
-                <p class="pricing-card-title m-3">Сотрудник  {{ object.employee | default:"- не назначен"}}</p>
-                <img class="img-fluid rounded mx-auto d-block" src="{{ object.Imag | my_media }}"
-                     style="max-height:350px">
+                <h3 class="card-title pricing-card-title">{{ object.price | floatformat:0 }} руб.</h3>
+                <img class="img-fluid rounded mx-auto d-block" src="{{ object.Imag | my_media }}">
                 <a class="btn mt-3 btn-lg btn-block btn-outline-primary form-control"
                    href="{% url 'shop:flowers_detail/' object.pk %}"
                    role="button">
