@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 NULLABLE = {'blank': True, 'null': True}
@@ -38,8 +39,11 @@ class Flowers(models.Model):
     date_of_creation = models.DateField(auto_now_add=True, verbose_name='Дата создания')
     last_modified_date = models.DateField(auto_now=True, verbose_name='Дата последнего изменения')
 
+    employee = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE,
+                                 verbose_name='Сотрудник')
+
     def __str__(self):
-        return f'{self.pk} {self.name} {self.category} {self.price} {self.date_of_creation}'
+        return f'{self.pk} {self.name} {self.category} {self.price} {self.date_of_creation} {self.employee}'
 
     class Meta:
         verbose_name = 'Букет'  # Настройка для наименования одного объекта

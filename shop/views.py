@@ -18,6 +18,11 @@ class FlowersListView(ListView):
         'title': 'Букеты - интернет магазин'
     }
 
+    # def get_context_data(self, *, object_list=None, **kwargs):
+    #     context_data = super().get_context_data(**kwargs)
+    #     context_data['page_obj'] = Flowers.objects.filter(employee=self.request.user)
+    #     return context_data
+
 
 class FlowersCreateView(CreateView):
     model = Flowers
@@ -37,6 +42,7 @@ class FlowersCreateView(CreateView):
     def form_valid(self, form):
         formset = self.get_context_data()['formset']
         self.object = form.save()
+        self.object.employee = self.request.user
         if formset.is_valid():
             formset.instance = self.object
             formset.save()
@@ -62,6 +68,7 @@ class FlowersUpdateView(UpdateView):
     def form_valid(self, form):
         formset = self.get_context_data()['formset']
         self.object = form.save()
+        self.object.employee = self.request.user
         if formset.is_valid():
             formset.instance = self.object
             formset.save()
@@ -76,6 +83,7 @@ class FlowersDetailView(DetailView):
 class FlowersDeleteView(DeleteView):
     model = Flowers
     success_url = reverse_lazy('shop:flowers_list/')
+
 
 # def home(request):
 #     bouquets_list = Flowers.objects.all()
@@ -146,9 +154,7 @@ class BlogListView(ListView):
     # не работает пагинатор
     def get_context_data(self, *, object_list=None, **kwargs):
         context_data = super().get_context_data(**kwargs)
-        print(context_data)
         context_data['page_obj'] = Blog.objects.all()
-        #context_data['page_obj'] = Blog.objects.filter(is_publication=True)
         return context_data
 
 

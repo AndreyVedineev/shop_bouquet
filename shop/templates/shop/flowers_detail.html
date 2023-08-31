@@ -18,6 +18,7 @@
             <h2 class="my-1 font-weight-normal"> {{ object.name}} </h2>
             <h4>{{ object.category}}</h4>
             <h4>{{ object.price | floatformat:0 }} ₽.</h4>
+            <h5>Сотрудник  {{ object.employee | default:"- не назначен" }}</h5>
             <p class="">Доставка в п. Мостовской: от 200 руб.</p>
         </div>
     </div>

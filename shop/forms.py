@@ -23,7 +23,7 @@ class FlowersForm(StyleFormMixin,forms.ModelForm):
 
     class Meta:
         model = Flowers
-        exclude = ('date_of_creation', 'last_modified_date',)
+        exclude = ('date_of_creation', 'last_modified_date', 'employee')
 
     def clean_name(self):
         bad = {'казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция',
