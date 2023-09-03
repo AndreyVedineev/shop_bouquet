@@ -157,5 +157,7 @@ LOGOUT_REDIRECT_URL = "/"
 
 SITE_ID = 1
 
+LOGIN_URL = '/users/'
+
 
 

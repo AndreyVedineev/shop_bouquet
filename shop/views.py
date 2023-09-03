@@ -122,20 +122,6 @@ def contacts(request):
     return render(request, 'shop/contacts.html')
 
 
-# def detail_info(request, pk):
-#     item = Flowers.objects.get(pk=pk)
-#     cat = item.category
-#     pr = item.price
-#     img = item.Imag
-#     context = {
-#         'title': f'Букет -  {item.name}',
-#         'category': cat,
-#         'price': pr,
-#         'img': img
-#     }
-#     return render(request, 'shop/flowers_detail.html', context)
-
-
 class BlogCreateView(LoginRequiredMixin, CreateView):
     model = Blog
     fields = ('name', 'content', 'is_published', 'image')
@@ -173,7 +159,7 @@ class BlogDetailView(DetailView):
 
 class BlogUpdateView(UpdateView):
     model = Blog
-    fields = ('name', 'content', 'is_publication', 'image')
+    fields = ('name', 'content', 'is_published', 'image')
 
     # как вернуть на редактирование статьи
 
@@ -198,9 +184,9 @@ class BlogDeleteView(DeleteView):
 
 def toggle_activity(request, pk):
     blog_item = get_object_or_404(Blog, pk=pk)
-    if blog_item.is_publication:
-        blog_item.is_publication = False
+    if blog_item.is_published:
+        blog_item.is_published = False
     else:
-        blog_item.is_publication = True
+        blog_item.is_published = True
     blog_item.save()
     return redirect(reverse('shop:blog_list/'))

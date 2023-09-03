@@ -51,6 +51,13 @@ class Flowers(models.Model):
         verbose_name_plural = 'Букеты'  # Настройка для наименования набора объектов
         ordering = ['name']
 
+        permissions = [
+            (
+                "set_published",
+                "Can publish post"
+            )
+        ]
+
 
 class Blog(models.Model):
     name = models.CharField(max_length=150, verbose_name='Заголовок')
