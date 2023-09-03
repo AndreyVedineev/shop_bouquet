@@ -46,8 +46,8 @@ class RegisterView(UserIsNotAuthenticated, CreateView):
     """
     model = User
     form_class = UserRegisterForm
-    template_name = 'users/register.html'
     success_url = reverse_lazy('shop:flowers_list')
+    template_name = 'users/register.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -67,6 +67,7 @@ class RegisterView(UserIsNotAuthenticated, CreateView):
         send_mail(
             subject='Подтвердите свой электронный адрес',
             message=f'Пожалуйста, перейдите по следующей ссылке, чтобы подтвердить свой адрес электронной почты: http://{current_site}{activation_url}',
+            from_email=settings.EMAIL_HOST_USER,
             recipient_list=[user.email],
             fail_silently=False,
         )
@@ -111,9 +112,9 @@ class UserConfirmEmailView(View):
             user.is_active = True
             user.save()
             login(request, user)
-            return redirect('users:email_confirmed/')
+            return redirect('email_confirmed')
         else:
-            return redirect('users:email_confirmation_failed/')
+            return redirect('email_confirmation_failed')
 
 
 class EmailConfirmationSentView(TemplateView):
