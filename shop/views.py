@@ -136,10 +136,11 @@ def contacts(request):
 #     return render(request, 'shop/flowers_detail.html', context)
 
 
-class BlogCreateView(CreateView):
+class BlogCreateView(LoginRequiredMixin, CreateView):
     model = Blog
-    fields = ('name', 'content', 'is_publication', 'image')
+    fields = ('name', 'content', 'is_published', 'image')
     success_url = reverse_lazy('shop:blog_list/')
+    login_url = reverse_lazy('shop:blog_list/')
 
     def form_valid(self, form):
         if form.is_valid():
