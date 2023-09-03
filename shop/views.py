@@ -1,5 +1,6 @@
 import json
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import inlineformset_factory
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
@@ -24,10 +25,11 @@ class FlowersListView(ListView):
     #     return context_data
 
 
-class FlowersCreateView(CreateView):
+class FlowersCreateView(LoginRequiredMixin, CreateView):
     model = Flowers
     form_class = FlowersForm
     success_url = reverse_lazy('shop:flowers_list/')
+    login_url = reverse_lazy('shop:flowers_list/')
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)

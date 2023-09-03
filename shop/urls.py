@@ -1,5 +1,7 @@
 from django.urls import path
 
+
+
 from shop.apps import ShopConfig
 from shop.views import contacts, FlowersListView, FlowersDetailView, BlogCreateView, BlogListView, BlogDetailView, \
     BlogUpdateView, BlogDeleteView, toggle_activity, FlowersCreateView, FlowersUpdateView, FlowersDeleteView
