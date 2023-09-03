@@ -38,6 +38,7 @@ class Flowers(models.Model):
     price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name='Цена')
     date_of_creation = models.DateField(auto_now_add=True, verbose_name='Дата создания')
     last_modified_date = models.DateField(auto_now=True, verbose_name='Дата последнего изменения')
+    is_published = models.BooleanField(default=False, verbose_name='Признак публикации ')
 
     employee = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE,
                                  verbose_name='Сотрудник')
@@ -57,7 +58,6 @@ class Blog(models.Model):
     content = models.TextField(**NULLABLE, verbose_name='Содержимое')
     image = models.ImageField(upload_to='products/', verbose_name='Превью', **NULLABLE)
     date_of_creation = models.DateField(auto_now_add=True, verbose_name='Дата создания')
-    is_publication = models.BooleanField(default=True, verbose_name='Признак публикации')
     number_of_views = models.IntegerField(default=0, verbose_name='Количество просмотров', **NULLABLE)
 
     def __str__(self):
