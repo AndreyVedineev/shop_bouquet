@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.tokens import default_token_generator
@@ -60,7 +61,7 @@ class RegisterView(UserIsNotAuthenticated, CreateView):
 
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
-        activation_url = reverse_lazy('confirm_email', kwargs={'uidb64': uid, 'token': token})
+        activation_url = reverse_lazy('users:confirm', kwargs={'uidb64': uid, 'token': token})
         current_site = Site.objects.get_current().domain
 
         send_mail(
@@ -71,7 +72,6 @@ class RegisterView(UserIsNotAuthenticated, CreateView):
             fail_silently=False,
         )
 
-        form.save()
         return redirect('users:email_confirmation_sent/')
 
 
