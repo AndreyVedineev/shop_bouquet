@@ -44,7 +44,7 @@ class Flowers(models.Model):
                                  verbose_name='Сотрудник')
 
     def __str__(self):
-        return f'{self.pk} {self.name} {self.category} {self.price} {self.date_of_creation} {self.employee}'
+        return f'{self.pk} {self.name} {self.category} {self.price} {self.date_of_creation} {self.employee} {self.is_published}'
 
     class Meta:
         verbose_name = 'Букет'  # Настройка для наименования одного объекта

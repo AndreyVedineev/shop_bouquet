@@ -1,6 +1,8 @@
 import json
 
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.models import Permission
+from django.contrib.contenttypes.models import ContentType
 from django.forms import inlineformset_factory
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
@@ -19,11 +21,6 @@ class FlowersListView(ListView):
         'title': 'Букеты - интернет магазин'
     }
 
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     context_data = super().get_context_data(**kwargs)
-    #     context_data['page_obj'] = Flowers.objects.filter(employee=self.request.user)
-    #     return context_data
-
 
 class FlowersCreateView(LoginRequiredMixin, CreateView):
     model = Flowers
@@ -31,8 +28,20 @@ class FlowersCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('shop:flowers_list/')
     login_url = reverse_lazy('shop:flowers_list/')
 
+    # content_type = ContentType.objects.get_for_model(Flowers)
+    # print(content_type)
+
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
+
+        content_type = ContentType.objects.get_for_model(Flowers)
+        permission = Permission.objects.get(
+            codename="set_published",
+            content_type=content_type,
+        )
+        print(permission)
+
+        # user.user_permissions.add(perm_object)
 
         Formset = inlineformset_factory(Flowers, Versions, form=VersionForm, extra=1)
         if self.request.method == "POST":
@@ -45,6 +54,7 @@ class FlowersCreateView(LoginRequiredMixin, CreateView):
         formset = self.get_context_data()['formset']
         self.object = form.save()
         self.object.employee = self.request.user
+
         if formset.is_valid():
             formset.instance = self.object
             formset.save()
@@ -52,7 +62,8 @@ class FlowersCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class FlowersUpdateView(UpdateView):
+class FlowersUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'shop.change_flowers'
     model = Flowers
     form_class = FlowersForm
     success_url = reverse_lazy('shop:flowers_list/')
@@ -86,20 +97,6 @@ class FlowersDeleteView(DeleteView):
     model = Flowers
     success_url = reverse_lazy('shop:flowers_list/')
 
-
-# def home(request):
-#     bouquets_list = Flowers.objects.all()
-#     # Постраничная разбивка с 3 букетами на страницу
-#     paginator = Paginator(bouquets_list, 3)
-#     page_numer = request.GET.get('page', 1)
-#     bouquets_obj = paginator.get_page(page_numer)
-#
-#     context = {
-#         'object_list': bouquets_obj.object_list,
-#         'title': '<Букеты - интернет магазин>',
-#         'bouquets': bouquets_obj,
-#     }
-#     return render(request, 'shop/flowers_list.html', context)
 
 
 def contacts(request):
