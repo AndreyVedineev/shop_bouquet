@@ -1,6 +1,5 @@
 from django import forms
 from django.contrib.auth import login
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import LoginView
@@ -61,7 +60,7 @@ class RegisterView(UserIsNotAuthenticated, CreateView):
 
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
-        activation_url = reverse_lazy('users:confirm', kwargs={'uidb64': uid, 'token': token})
+        activation_url = reverse_lazy('confirm_email', kwargs={'uidb64': uid, 'token': token})
         current_site = Site.objects.get_current().domain
 
         send_mail(
@@ -112,9 +111,9 @@ class UserConfirmEmailView(View):
             user.is_active = True
             user.save()
             login(request, user)
-            return redirect('email_confirmed')
+            return redirect('users:email_confirmed/')
         else:
-            return redirect('email_confirmation_failed')
+            return redirect('users:email_confirmation_failed/')
 
 
 class EmailConfirmationSentView(TemplateView):
