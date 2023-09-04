@@ -13,11 +13,13 @@
                 <h3 class="card-title pricing-card-title">{{ object.price | floatformat:0 }} руб.</h3>
                 <h5>Сотрудник  {{ object.employee | default:"- не назначен" }}</h5>
                 <img class="img-fluid rounded mx-auto d-block" src="{{ object.Imag | my_media }}">
-                <a class="btn mt-3 btn-lg btn-block btn-outline-primary form-control"
-                   href="{% url 'shop:flowers_detail/' object.pk %}"
-                   role="button">
-                    Подробно
-                </a>
+                {% if perms.shop.view_flowers %}
+                    <a class="btn mt-3 btn-lg btn-block btn-outline-primary form-control"
+                       href="{% url 'shop:flowers_detail/' object.pk %}"
+                       role="button">
+                        Подробно
+                    </a>
+                {% endif %}
             </div>
         </div>
     </div>

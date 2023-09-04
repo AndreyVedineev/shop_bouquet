@@ -14,7 +14,8 @@ from shop.forms import FlowersForm, VersionForm
 from shop.models import Flowers, Blog, Versions
 
 
-class FlowersListView(LoginRequiredMixin, ListView):
+class FlowersListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+    permission_required = 'shop.view_flowers'
     paginate_by = 3
     model = Flowers
 
@@ -23,9 +24,10 @@ class FlowersListView(LoginRequiredMixin, ListView):
     }
 
 
-class FlowersCreateView(LoginRequiredMixin, CreateView):
+class FlowersCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Flowers
     form_class = FlowersForm
+    permission_required = 'shop.add_flowers'
     success_url = reverse_lazy('shop:flowers_list/')
     login_url = reverse_lazy('shop:flowers_list/')
 
@@ -94,9 +96,10 @@ class FlowersDetailView(DetailView):
     model = Flowers
 
 
-class FlowersDeleteView(LoginRequiredMixin, DeleteView):
+class FlowersDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Flowers
     success_url = reverse_lazy('shop:flowers_list/')
+    permission_required = 'shop.delete_flowers'
 
 
 def contacts(request):

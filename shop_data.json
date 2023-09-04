@@ -489,6 +489,188 @@
     }
   },
   {
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+      "action_time": "2023-09-03T18:14:04.758Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "1",
+      "object_repr": "moderator",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+      "action_time": "2023-09-03T18:17:18.190Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "2",
+      "object_repr": "volunteer",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+      "action_time": "2023-09-03T18:17:54.227Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "38",
+      "object_repr": "avedineev@yandex.ru",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+      "action_time": "2023-09-03T19:52:56.963Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "2",
+      "object_repr": "volunteer",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+      "action_time": "2023-09-03T20:33:38.299Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "39",
+      "object_repr": "victoire.petit@example.com",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+      "action_time": "2023-09-03T20:34:29.814Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "39",
+      "object_repr": "victoire.petit@example.com",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+      "action_time": "2023-09-03T20:35:24.173Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "40",
+      "object_repr": "victoire.petit@example.com",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+      "action_time": "2023-09-03T20:36:04.987Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "40",
+      "object_repr": "victoire.petit@example.com",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 46,
+    "fields": {
+      "action_time": "2023-09-04T16:18:37.271Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "3",
+      "object_repr": "super",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 47,
+    "fields": {
+      "action_time": "2023-09-04T16:19:55.479Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "4",
+      "object_repr": "visitor",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 48,
+    "fields": {
+      "action_time": "2023-09-04T16:20:11.002Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "41",
+      "object_repr": "avedineev69@gmail.com",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 49,
+    "fields": {
+      "action_time": "2023-09-04T16:20:24.737Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "avedineev@ya.ru",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 50,
+    "fields": {
+      "action_time": "2023-09-04T16:21:17.208Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "1",
+      "object_repr": "moderator",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 51,
+    "fields": {
+      "action_time": "2023-09-04T16:23:43.340Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "1",
+      "object_repr": "moderator",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+  },
+  {
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -921,6 +1103,118 @@
     }
   },
   {
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+      "name": "Can publish post",
+      "content_type": 7,
+      "codename": "set_published_status"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+      "name": "Can publish post",
+      "content_type": 7,
+      "codename": "is_published"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+      "name": "Can publish post",
+      "content_type": 7,
+      "codename": "set_published"
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+      "name": "moderator",
+      "permissions": [
+        22,
+        26,
+        28
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 3,
+    "fields": {
+      "name": "super",
+      "permissions": [
+        1,
+        2,
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        5,
+        6,
+        7,
+        8,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        33,
+        34,
+        35,
+        36,
+        21,
+        22,
+        23,
+        24,
+        29,
+        30,
+        31,
+        32,
+        25,
+        26,
+        27,
+        50,
+        51,
+        49,
+        28,
+        37,
+        38,
+        39,
+        40,
+        45,
+        46,
+        47,
+        48,
+        41,
+        42,
+        43,
+        44
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 4,
+    "fields": {
+      "name": "visitor",
+      "permissions": [
+        33,
+        36,
+        32,
+        28
+      ]
+    }
+  },
+  {
     "model": "contenttypes.contenttype",
     "pk": 1,
     "fields": {
@@ -1018,10 +1312,10 @@
   },
   {
     "model": "sessions.session",
-    "pk": "kjn9ve7l8smihfdxn8tpurxbxnhwfndx",
+    "pk": "p43p3dbwnh0dqqbssdttyck2aks84z7o",
     "fields": {
-      "session_data": ".eJxVjEEOwiAQRe_C2hCGFnFcuvcMBGYYqRpISrsy3l2bdKHb_977LxXiupSw9jyHidVZDSd1-B1TpEeuG-F7rLemqdVlnpLeFL3Trq-N8_Oyu38HJfbyrQHJZ7IZIhA6EBBrEJIdRytOIli2Ro6MiM4MMhBmJBbvwDN6x6zeHwfJOBk:1qcrFB:sgH7ZbUgqzTxFoV9G6DIOV0loYRaNiAjwCzea-Df2sw",
-      "expire_date": "2023-09-17T17:50:41.635Z"
+      "session_data": ".eJxVjMsOwiAQRf-FtSEMlJdL934DGRiQqoGktCvjv2uTLnR7zzn3xQJuaw3byEuYiZ3ZBOz0O0ZMj9x2Qndst85Tb-syR74r_KCDXzvl5-Vw_w4qjvqtAQvEKJyBnJSXmayZBGkw0iddQAgEkDJRRKuVRWdLhKIcCvKykED2_gABijgT:1qdCNB:m9ZHppxG6-ITFFnccQBfXbEGWg3S_Lkyk9d7lpbrvUo",
+      "expire_date": "2023-09-18T16:24:21.923Z"
     }
   },
   {
@@ -1080,12 +1374,12 @@
     "fields": {
       "name": "Ах, это свадьба!",
       "Imag": "products/12-cvetov-dlya-buketa.jpg",
-      "category": 3,
+      "category": 4,
       "price": "5000.00",
       "date_of_creation": "2023-08-24",
-      "last_modified_date": "2023-08-31",
-      "is_published": false,
-      "employee": 1
+      "last_modified_date": "2023-09-04",
+      "is_published": true,
+      "employee": 38
     }
   },
   {
@@ -1167,8 +1461,8 @@
       "category": 4,
       "price": "2000.00",
       "date_of_creation": "2023-08-24",
-      "last_modified_date": "2023-08-31",
-      "is_published": false,
+      "last_modified_date": "2023-09-04",
+      "is_published": true,
       "employee": 1
     }
   },
@@ -1223,7 +1517,8 @@
       "content": "1 сентября — символ нового этапа в жизни многих школьников и студентов. Время, когда в воздухе витает аромат свежих книг, слышится звон колокольчиков, и ощущается радость получения новых знаний и встречи с друзьями по учебе.",
       "image": "products/buket-1.png",
       "date_of_creation": "2023-08-28",
-      "number_of_views": 105
+      "number_of_views": 121,
+      "is_published": false
     }
   },
   {
@@ -1235,7 +1530,8 @@
       "content": "Первое сентября – это не просто знак начала нового учебного года. В этот день в воздухе витает волнение: робкие первоклассники знакомятся с первой учительницей, старшие школьники снова встречают школьных друзей, которых не видели целое лето, а учителя с новыми силами приступают к тяжелому, но увлекательному преподавательскому труду. Цветочные композиции становятся в этот день неотъемлемой частью праздничной атмосферы, а также символом радости и успехов в новом учебном году.",
       "image": "products/shkola.jpg",
       "date_of_creation": "2023-08-28",
-      "number_of_views": 204
+      "number_of_views": 204,
+      "is_published": false
     }
   },
   {
@@ -1247,7 +1543,8 @@
       "content": "8 июля жители России традиционно празднуют День семьи, любви и верности. Праздник зародился в городе Муроме, и тесно связан со святыми Петром и Февронией, которые считаются покровителями брака и семьи. Этот день отмечается с целью укрепления семейных ценностей, уважения и любви.",
       "image": "products/rusbuket-2.png",
       "date_of_creation": "2023-08-28",
-      "number_of_views": 10004
+      "number_of_views": 10004,
+      "is_published": false
     }
   },
   {
@@ -1259,7 +1556,8 @@
       "content": "Часто использование белых цветов на Пасху имеет отдельное значение. Это связано с тем, что белый цвет олицетворяет чистоту, невинность, мир и благополучие. Белый цвет также связывается с Христом, который воскрес из мертвых.",
       "image": "products/easter.jpg",
       "date_of_creation": "2023-08-28",
-      "number_of_views": 509
+      "number_of_views": 510,
+      "is_published": true
     }
   },
   {
@@ -1267,7 +1565,7 @@
     "pk": 1,
     "fields": {
       "password": "pbkdf2_sha256$600000$7BVV7ekkqghioziqOmV4F8$A35j82hpMFHP1qkjBksKo00gazN32oA6SHQ3x4uq/eE=",
-      "last_login": "2023-09-03T17:50:00.238Z",
+      "last_login": "2023-09-04T16:23:14.141Z",
       "is_superuser": true,
       "first_name": "Andrey",
       "last_name": "Vedineev",
@@ -1280,7 +1578,9 @@
       "country": "Россия",
       "verification_key": null,
       "is_verified": false,
-      "groups": [],
+      "groups": [
+        3
+      ],
       "user_permissions": []
     }
   },
@@ -1289,20 +1589,68 @@
     "pk": 38,
     "fields": {
       "password": "pbkdf2_sha256$600000$EtnSk4Te1rhrsk9oEYIgTH$9z6Dxgx8mQJvUdN+VoM0L8BgSqBL2QO3ftqRX4jASXA=",
-      "last_login": "2023-09-03T17:50:41.632Z",
+      "last_login": "2023-09-04T16:23:51.887Z",
       "is_superuser": false,
       "first_name": "",
       "last_name": "",
       "is_staff": false,
       "is_active": true,
-      "date_joined": "2023-09-03T17:50:24.299Z",
+      "date_joined": "2023-09-03T17:50:24Z",
       "email": "avedineev@yandex.ru",
       "phone": "+79182875001",
       "avatar": "",
       "country": "Россия",
       "verification_key": null,
       "is_verified": false,
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 40,
+    "fields": {
+      "password": "Rubin13",
+      "last_login": "2023-09-03T20:35:21Z",
+      "is_superuser": false,
+      "first_name": "Victoire",
+      "last_name": "Petit",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-09-03T20:34:31Z",
+      "email": "victoire.petit@example.com",
+      "phone": "+791822233232",
+      "avatar": "",
+      "country": null,
+      "verification_key": null,
+      "is_verified": false,
       "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 41,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$8GUgTFPhTnoQGYsqlv1jgP$Lkzq0Xq3z1tBakXzJERlxfVNlfYHulb0BYGg9/GarqE=",
+      "last_login": "2023-09-04T16:24:21.922Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-09-04T15:12:09Z",
+      "email": "avedineev69@gmail.com",
+      "phone": "+79182875001",
+      "avatar": "",
+      "country": "Россия",
+      "verification_key": null,
+      "is_verified": false,
+      "groups": [
+        4
+      ],
       "user_permissions": []
     }
   }

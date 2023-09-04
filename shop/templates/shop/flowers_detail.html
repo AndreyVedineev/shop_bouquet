@@ -24,16 +24,21 @@
     </div>
 
     <div class="col-3">
-        <a class="btn mt-3 btn-lg btn-block btn-outline-primary"
-           href="{% url 'shop:flowers_update/' object.pk %}"
-           role="button">
-            Изменить
-        </a>
-        <a class="btn mt-3 btn-lg btn-block btn-outline-danger"
-           href="{% url 'shop:flowers_delete/' object.pk %}"
-           role="button">
-            Удалить
-        </a>
+            {% if perms.shop.change_flowers %}
+                <a class="btn mt-3 btn-lg btn-block btn-outline-primary"
+                   href="{% url 'shop:flowers_update/' object.pk %}"
+                   role="button">
+                    Изменить
+                </a>
+            {% endif %}
+            {% if perms.shop.delete_flowers %}
+                <a class="btn mt-3 btn-lg btn-block btn-outline-danger"
+                   href="{% url 'shop:flowers_delete/' object.pk %}"
+                   role="button">
+                    Удалить
+                </a>
+            {% endif %}
+
         {% if perms.shop.change_flowers %}
             {% if object.is_published %}
             <a class="btn mt-3 btn-lg btn-block btn-outline-danger"
