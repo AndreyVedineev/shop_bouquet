@@ -27,7 +27,7 @@
                    role="button">
                     Удалить
                 </a>
-                {% if object.is_publication %}
+                {% if object.is_published %}
                 <a class="btn mt-3 btn-lg btn-block btn-outline-danger"
                    href="{% url 'shop:toggle_activity/' object.pk %}">
                         Деактивировать
