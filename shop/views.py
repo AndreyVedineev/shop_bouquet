@@ -14,7 +14,8 @@ from shop.forms import FlowersForm, VersionForm
 from shop.models import Flowers, Blog, Versions
 
 
-class FlowersListView(LoginRequiredMixin, ListView):
+class FlowersListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+    permission_required = 'shop.view_flowers'
     paginate_by = 3
     model = Flowers
 
@@ -22,10 +23,20 @@ class FlowersListView(LoginRequiredMixin, ListView):
         'title': 'Букеты - интернет магазин'
     }
 
+    def get_queryset(self):
+        """
+        Выводит только созданные или измененные user-ом букеты
+        :return: queryset
+        """
+        queryset = super().get_queryset().filter(employee_id=self.request.user.pk,)
 
-class FlowersCreateView(LoginRequiredMixin, CreateView):
+        return queryset
+
+
+class FlowersCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Flowers
     form_class = FlowersForm
+    permission_required = 'shop.add_flowers'
     success_url = reverse_lazy('shop:flowers_list/')
     login_url = reverse_lazy('shop:flowers_list/')
 
@@ -94,9 +105,10 @@ class FlowersDetailView(DetailView):
     model = Flowers
 
 
-class FlowersDeleteView(LoginRequiredMixin, DeleteView):
+class FlowersDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Flowers
     success_url = reverse_lazy('shop:flowers_list/')
+    permission_required = 'shop.delete_flowers'
 
 
 def contacts(request):
@@ -123,6 +135,7 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
     model = Blog
     fields = ('name', 'content', 'is_published', 'image')
     success_url = reverse_lazy('shop:blog_list/')
+
     # login_url = reverse_lazy('shop:blog_list/')
 
     def form_valid(self, form):
