@@ -1,5 +1,6 @@
 import json
 
+from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
@@ -13,7 +14,7 @@ from shop.forms import FlowersForm, VersionForm
 from shop.models import Flowers, Blog, Versions
 
 
-class FlowersListView(ListView):
+class FlowersListView(LoginRequiredMixin, ListView):
     paginate_by = 3
     model = Flowers
 
@@ -34,15 +35,6 @@ class FlowersCreateView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
 
-        content_type = ContentType.objects.get_for_model(Flowers)
-        permission = Permission.objects.get(
-            codename="set_published",
-            content_type=content_type,
-        )
-        print(permission)
-
-        # user.user_permissions.add(perm_object)
-
         Formset = inlineformset_factory(Flowers, Versions, form=VersionForm, extra=1)
         if self.request.method == "POST":
             context_data['formset'] = Formset(self.request.POST, instance=self.object)
@@ -62,7 +54,7 @@ class FlowersCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class FlowersUpdateView(PermissionRequiredMixin, UpdateView):
+class FlowersUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     permission_required = 'shop.change_flowers'
     model = Flowers
     form_class = FlowersForm
@@ -70,6 +62,15 @@ class FlowersUpdateView(PermissionRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
+
+        content_type = ContentType.objects.get_for_model(Flowers)
+        permission = Permission.objects.get(
+            codename="set_published",
+            content_type=content_type,
+        )
+
+        # user.user_permissions.add(perm_object)
+        # print(user.has_perm('shop.change_flowers'))
 
         Formset = inlineformset_factory(Flowers, Versions, form=VersionForm, extra=1)
         if self.request.method == "POST":
@@ -93,10 +94,9 @@ class FlowersDetailView(DetailView):
     model = Flowers
 
 
-class FlowersDeleteView(DeleteView):
+class FlowersDeleteView(LoginRequiredMixin, DeleteView):
     model = Flowers
     success_url = reverse_lazy('shop:flowers_list/')
-
 
 
 def contacts(request):
@@ -123,7 +123,7 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
     model = Blog
     fields = ('name', 'content', 'is_published', 'image')
     success_url = reverse_lazy('shop:blog_list/')
-    login_url = reverse_lazy('shop:blog_list/')
+    # login_url = reverse_lazy('shop:blog_list/')
 
     def form_valid(self, form):
         if form.is_valid():
@@ -133,7 +133,7 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class BlogListView(ListView):
+class BlogListView(LoginRequiredMixin, ListView):
     paginate_by = 2
     model = Blog
 
@@ -187,3 +187,14 @@ def toggle_activity(request, pk):
         blog_item.is_published = True
     blog_item.save()
     return redirect(reverse('shop:blog_list/'))
+
+
+@permission_required('shop.change_flowers')
+def toggle_activity_fl(request, pk):
+    flowers_item = get_object_or_404(Flowers, pk=pk)
+    if flowers_item.is_published:
+        flowers_item.is_published = False
+    else:
+        flowers_item.is_published = True
+    flowers_item.save()
+    return redirect(reverse('shop:flowers_list/'))

@@ -18,7 +18,7 @@
             <h2 class="my-1 font-weight-normal"> {{ object.name}} </h2>
             <h4>{{ object.category}}</h4>
             <h4>{{ object.price | floatformat:0 }} ₽.</h4>
-            <h5>Сотрудник  {{ object.employee | default:"- не назначен" }}</h5>
+            <h5>Сотрудник {{ object.employee | default:"- не назначен" }}</h5>
             <p class="">Доставка в п. Мостовской: от 200 руб.</p>
         </div>
     </div>
@@ -34,6 +34,19 @@
            role="button">
             Удалить
         </a>
+        {% if perms.shop.change_flowers %}
+            {% if object.is_published %}
+            <a class="btn mt-3 btn-lg btn-block btn-outline-danger"
+               href="{% url 'shop:toggle_activity_fl/' object.pk %}">
+                Отменить публикацию продукта
+            </a>
+            {% else %}
+            <a class="btn mt-3 btn-lg btn-block btn-outline-primary"
+               href="{% url 'shop:toggle_activity_fl/' object.pk %}">
+                Опубликовать продукт
+            </a>
+            {% endif %}
+        {% endif %}
     </div>
 </div>
 

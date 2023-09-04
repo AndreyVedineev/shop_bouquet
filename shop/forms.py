@@ -13,21 +13,16 @@ class StyleFormMixin:
             field.widget.attrs['class'] = 'form-control'
 
 
-class FlowersForm(StyleFormMixin,forms.ModelForm):
-
+class FlowersForm(StyleFormMixin, forms.ModelForm):
     # def __init__(self, *args, **kwargs):
     #     super().__init__(*args, **kwargs)
     #     self.helper = FormHelper(self)
     #     self.helper.form_action = reverse_lazy('shop:flowers_list/')
 
-
     class Meta:
         model = Flowers
 
-        exclude = ('date_of_creation', 'last_modified_date', 'employee')
-
-        exclude = ('date_of_creation', 'last_modified_date',)
-
+        exclude = ('date_of_creation', 'last_modified_date', 'employee', 'is_published')
 
     def clean_name(self):
         bad = {'казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция',
