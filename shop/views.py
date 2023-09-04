@@ -23,6 +23,15 @@ class FlowersListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
         'title': 'Букеты - интернет магазин'
     }
 
+    def get_queryset(self):
+        """
+        Выводит только созданные или измененные user-ом букеты
+        :return: queryset
+        """
+        queryset = super().get_queryset().filter(employee_id=self.request.user.pk,)
+
+        return queryset
+
 
 class FlowersCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Flowers
@@ -126,6 +135,7 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
     model = Blog
     fields = ('name', 'content', 'is_published', 'image')
     success_url = reverse_lazy('shop:blog_list/')
+
     # login_url = reverse_lazy('shop:blog_list/')
 
     def form_valid(self, form):
