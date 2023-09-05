@@ -163,7 +163,7 @@ SITE_ID = 1
 
 LOGIN_URL = '/users/'
 
-CACHE_ENABLED = os.getenv('CACHE_ENABLED') == 'True'
+CACHE_ENABLED = os.getenv('CACHE_ENABLED') == '1'
 
 if CACHE_ENABLED:
     CACHES = {
