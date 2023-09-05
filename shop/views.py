@@ -1,9 +1,9 @@
-import json
-
+from django.conf import settings
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
+from django.core.cache import cache
 from django.forms import inlineformset_factory
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
@@ -11,7 +11,21 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from pytils.translit import slugify
 
 from shop.forms import FlowersForm, VersionForm
-from shop.models import Flowers, Blog, Versions
+from shop.models import Flowers, Blog, Versions, Category
+from shop.serives import write_json_message, get_category_cache
+
+
+class CategoryListView(ListView):
+    model = Category
+
+    extra_context = {
+        'title': 'Список категорий'
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        get_category_cache(context)
+        return context
 
 
 class FlowersListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
@@ -28,7 +42,7 @@ class FlowersListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
         Выводит только созданные или измененные user-ом букеты
         :return: queryset
         """
-        queryset = super().get_queryset().filter(employee_id=self.request.user.pk,)
+        queryset = super().get_queryset().filter(employee_id=self.request.user.pk, )
 
         return queryset
 
@@ -39,9 +53,6 @@ class FlowersCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView)
     permission_required = 'shop.add_flowers'
     success_url = reverse_lazy('shop:flowers_list/')
     login_url = reverse_lazy('shop:flowers_list/')
-
-    # content_type = ContentType.objects.get_for_model(Flowers)
-    # print(content_type)
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
@@ -116,7 +127,7 @@ def contacts(request):
     # а также передается информация, которую заполнил пользователь
 
     if request.method == 'POST':
-        data = {}
+        # data = {}
         name = request.POST.get('name')
         email = request.POST.get('phone')
         message = request.POST.get('message')
@@ -125,9 +136,8 @@ def contacts(request):
             'email': email,
             'message': message
         }
-
-        with open('data_massage.json', 'a', encoding='utf-8') as fp:
-            json.dump(data, fp)
+        # сервисная
+        write_json_message(data)
     return render(request, 'shop/contacts.html')
 
 

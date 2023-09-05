@@ -2,6 +2,7 @@
 
 <nav class="ms-5">
         <a class="p-2 btn btn-outline-primary" href="/">Каталог</a>
+        <a class="p-2 btn btn-outline-primary" href="{% url 'shop:flowers_category/' %}">Список категорий</a>
         {% if perms.shop.change_flowers %}
         {% if perms.shop.add_flowers %}
                 <a class="p-2 btn btn-outline-primary" href="{% url 'shop:flowers_create/' %}">Создать букет</a>

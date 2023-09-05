@@ -1,0 +1,96 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$7BVV7ekkqghioziqOmV4F8$A35j82hpMFHP1qkjBksKo00gazN32oA6SHQ3x4uq/eE=",
+      "last_login": "2023-09-05T12:49:28.092Z",
+      "is_superuser": true,
+      "first_name": "Andrey",
+      "last_name": "Vedineev",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-08-31T11:13:29Z",
+      "email": "avedineev@ya.ru",
+      "phone": "+79182875001",
+      "avatar": "users/avatar.png",
+      "country": "Россия",
+      "verification_key": null,
+      "is_verified": false,
+      "groups": [
+        3
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 38,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$EtnSk4Te1rhrsk9oEYIgTH$9z6Dxgx8mQJvUdN+VoM0L8BgSqBL2QO3ftqRX4jASXA=",
+      "last_login": "2023-09-05T12:37:02.547Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-09-03T17:50:24Z",
+      "email": "avedineev@yandex.ru",
+      "phone": "+79182875001",
+      "avatar": "",
+      "country": "Россия",
+      "verification_key": null,
+      "is_verified": false,
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 40,
+    "fields": {
+      "password": "Rubin13",
+      "last_login": "2023-09-03T20:35:21Z",
+      "is_superuser": false,
+      "first_name": "Victoire",
+      "last_name": "Petit",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-09-03T20:34:31Z",
+      "email": "victoire.petit@example.com",
+      "phone": "+791822233232",
+      "avatar": "",
+      "country": null,
+      "verification_key": null,
+      "is_verified": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 42,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$dgfKHzm5cSxxTDt1vuJBFO$CZ4FdQBDFSFdlsAQibiLb4nXH05IDyfXqgKxTTvixj4=",
+      "last_login": "2023-09-05T12:38:11.771Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-09-05T12:36:00Z",
+      "email": "avedineev69@gmail.com",
+      "phone": null,
+      "avatar": "",
+      "country": null,
+      "verification_key": null,
+      "is_verified": false,
+      "groups": [
+        4
+      ],
+      "user_permissions": []
+    }
+  }
+]
