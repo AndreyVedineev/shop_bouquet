@@ -1,0 +1,11 @@
+# Redis
+CACHE_ENABLED = 
+CACHE_LOCATION = 
+
+# email
+EMAIL_HOST_PASSWORD = 
+
+# postgres
+PASSWORD = 
+
+
